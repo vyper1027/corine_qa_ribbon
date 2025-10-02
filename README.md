@@ -25,10 +25,10 @@ Incluye además un **proyecto de ArcGIS Pro** y un conjunto de **toolboxes perso
 - **Control de versiones:** Git + GitHub  
 
 ## 📂 Estructura del Repositorio  
-\```
+```
 /CodigoAddin         -> Proyecto en .NET con el código fuente del Add-In  
 /ProyectoArcGISPro   -> Proyecto de ArcGIS Pro con toolboxes y geodatabase de ejemplo  
-\```  
+```  
 
 ## 📦 Instalación
 
