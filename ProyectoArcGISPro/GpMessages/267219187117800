@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?><messages><msg code="0" type="2">Start Time: lunes, 15 de septiembre de 2025 11:53:47 a. m.</msg><msg code="0" type="0">Filtrando capa base con: Mes_Interpretacion = 1 OR Mes_Interpretacion = 2 OR Mes_Interpretacion = 3</msg><msg code="0" type="0">📁 Entrega almacenada en: C:\Users\Chris\OneDrive\Escritorio\Pruebas\QAProject\entregas\corte_mes123.gdb\corte_mes123</msg><msg code="0" type="0">🔗 Ruta de topología: C:\Users\Chris\OneDrive\Escritorio\Pruebas\QAProject\entregas\corte_mes123.gdb\corte_mes123\corte_mes123_Topology</msg><msg code="0" type="50">⚠️ No se pudo crear o actualizar la topología o exportar errores: Failed to execute. Parameters are not valid.
+ERROR 000824: The tool is not licensed.
+Failed to execute (CreateTopology).
+</msg><msg code="0" type="3">Succeeded at lunes, 15 de septiembre de 2025 11:54:13 a. m. (Elapsed Time: 26,29 seconds)</msg></messages>

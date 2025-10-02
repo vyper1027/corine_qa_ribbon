@@ -1,0 +1,191 @@
+﻿<ArcGIS defaultAssembly="ProAppModule1.dll"
+        defaultNamespace="ProAppModule1"
+        xmlns="http://schemas.esri.com/DADF/Registry"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://schemas.esri.com/DADF/Registry file:///C:/Program%20Files/ArcGIS/Pro/bin/ArcGIS.Desktop.Framework.xsd">
+
+	<AddInInfo id="{c30a8d37-34e8-431a-9f7c-a0b9ca5b7f43}" version="1.0" desktopVersion="3.3.52636" product="ArcGISPro">
+		<Name>ProAppModule1</Name>
+		<Description>ProAppModule1 description</Description>
+		<Image>Images\AddinDesktop32.png</Image>
+		<Author>Christrings</Author>
+		<Company>Acme</Company>
+		<Date>7/23/2025 3:42:00 PM</Date>
+		<Subject>Framework</Subject>
+	</AddInInfo>
+
+	<modules>
+		<insertModule id="ProAppModule1_Module"
+					  className="Module1"
+					  autoLoad="false"
+					  caption="Module1">
+
+			<!-- Grupos de la pestaña Add-In -->
+			<groups>
+				<group id="ProAppModule1_Group1" caption="Entregas" appearsOnAddInTab="true">
+					<button refID="ProAppModule1_UI_Buttons_ExportarEntregaButton" size="large" />
+					<button refID="ProAppModule1_UI_Buttons_FusionarEntregasButton" size="large" />
+				</group>
+
+				<group id="ProAppModule1_Group2" caption="Control de Calidad" appearsOnAddInTab="true">
+					<button refID="ProAppModule1_UI_Buttons_PoligonosAdyacentesButton" size="large" />
+					<button refID="ProAppModule1_UI_Buttons_PoligonosMenoresButton" size="large" />
+					<button refID="ProAppModule1_UI_Buttons_CambiosLogicosButton" size="large" />
+					<button refID="ProAppModule1_RevisionCodigosDeCambios" size="large"/>
+				</group>
+				
+				<group id="ProAppModule1_Group6" caption="Reportes" appearsOnAddInTab="true">
+					<button refID="ProAppModule1_GenerarReportes" size="large"/>
+				</group>
+				<group id="ProAppModule1_Group3" caption="Anotaciones" appearsOnAddInTab="true">
+					<comboBox refID="ProAppModule1_QCAnnotationComboBox" size="middle"/>
+					<tool refID="ProAppModule1_ColocarAnotacionTool" size="middle"/>
+					<button refID="ProAppModule1_ExportarFCAShapefileButton" size="middle"/>
+				</group>
+
+				<group id="ProAppModule1_Group4" caption="Herramientas de Contexto" appearsOnAddInTab="true">
+					<button refID="ProAppModule1_CoberturasFueraDeAltura" size="large"/>
+					<button refID="ProAppModule1_LineasDeCosta" size="large"/>			
+				</group>
+
+				<!--<group id="ProAppModule1_Group5" caption="Cambios" appearsOnAddInTab="true">
+					<button refID="ProAppModule1_RevisionCodigosDeCambios" size="large"/>					
+				</group>-->
+
+				
+			</groups>
+
+			<!-- Definición de controles -->
+			<controls>
+				<button id="ProAppModule1_UI_Buttons_ExportarEntregaButton"
+						caption="Exportar Entrega"
+						className="ProAppModule1.UI.Buttons.ExportarEntregaButton"
+						loadOnClick="true"
+						smallImage="ExportFeatures16"
+						largeImage="ExportFeatures32">
+					<tooltip heading="Exportar Recorte a GDB">
+						Recorta por atributos y exporta a una entrega versionada.<disabledText />
+					</tooltip>
+				</button>
+
+				<button id="ProAppModule1_UI_Buttons_FusionarEntregasButton"
+						caption="Fusionar Entregas"
+						className="ProAppModule1.UI.Buttons.FusionarEntregasButton"
+						loadOnClick="true"
+						smallImage="Layer_Union16"
+						largeImage="Layer_Union32">
+					<tooltip heading="Fusionar Entregas">
+						Fusiona dos entregas existentes con validación opcional.<disabledText />
+					</tooltip>
+				</button>
+
+				<button id="ProAppModule1_UI_Buttons_PoligonosAdyacentesButton"
+						caption="Validar Adyacencia"
+						className="ProAppModule1.UI.Buttons.ValidarAdyacenciaButton"
+						loadOnClick="true"
+						smallImage="ValidateArea16"
+						largeImage="ValidateArea32">
+					<tooltip heading="Validar Adyacencia">
+						Valida polígonos adyacentes con el mismo código.<disabledText />
+					</tooltip>
+				</button>
+
+				<button id="ProAppModule1_UI_Buttons_PoligonosMenoresButton"
+						caption="Validar Áreas Mínimas"
+						className="ProAppModule1.UI.Buttons.ValidarAreasMinimasButton"
+						loadOnClick="true"
+						smallImage="EditingPolygonTool16"
+						largeImage="EditingPolygonTool32">
+					<tooltip heading="Validar Áreas Mínimas">
+						Encuentra los polígonos que no cumplen con el área mínima.<disabledText />
+					</tooltip>
+				</button>
+
+				<button id="ProAppModule1_UI_Buttons_CambiosLogicosButton"
+						caption="Validar Cambios Logicos"
+						className="ProAppModule1.UI.Buttons.ValidarCambiosLogicosButton"
+						loadOnClick="true"
+						smallImage="ChangeParcelType16"
+						largeImage="ChangeParcelType32">
+					<tooltip heading="Validar Cambios Lógicos">
+						Valida los cambios entre dos periodos.<disabledText />
+					</tooltip>
+				</button>
+
+				<comboBox id="ProAppModule1_QCAnnotationComboBox"
+						  className="UI.ComboBoxes.QCAnnotationComboBox"
+						  loadOnClick="true"
+						  sizeString="Control_Calidad (C:\MiGDB.gdb)"
+						  label="Destino de Anotaciones"
+						  toolTip="Seleccione la GDB donde se guardarán las anotaciones"/>
+
+				<tool id="ProAppModule1_ColocarAnotacionTool"
+					  category="ProAppModule1_Tools"
+					  className="UI.MapTools.ColocarAnotacion"
+					  loadOnClick="true"
+					  smallImage="AnnotationAddLeader16"
+					  largeImage="AnnotationAddLeader32"
+					  caption="Colocar Anotación"
+					  tooltip="Permite colocar anotaciones en la capa CC_"/>
+
+				
+				<button id="ProAppModule1_ExportarFCAShapefileButton"
+						caption="Exportar a Shapefile"
+						className="UI.Buttons.ExportarFCAShapefileButton"
+						loadOnClick="true"
+						smallImage="GenericExport16"
+						largeImage="GenericExport32">
+					<tooltip heading="Exportar a Shapefile">
+						Exporta la capa CC_ seleccionada a Shapefile.<disabledText />
+					</tooltip>
+				</button>
+
+				<button id="ProAppModule1_CoberturasFueraDeAltura"
+					caption="Coberturas Fuera de Altura"
+					className="UI.Buttons.CoberturasFueraDeAlturaButton"
+					loadOnClick="true"
+					smallImage="LayerElevationAdd16"
+					largeImage="LayerElevationAdd32">
+					<tooltip heading="Coberturas Fuera de Altura">
+						Identifica áreas de cultivo en la cobertura del suelo (CLC) que no cumplen con el criterio de altitud establecido a partir del Modelo Digital de Elevación (DEM).<disabledText />
+					</tooltip>
+				</button>
+
+
+				<button id="ProAppModule1_LineasDeCosta"
+						caption="Coberturas Fuera de Costa"
+						className="UI.Buttons.CoberturasFueraDeCostaButton"
+						loadOnClick="true"
+						smallImage="WaterSource16"
+						largeImage="WaterSource32">
+					<tooltip heading="Coberturas Fuera de Costa">
+						Identifica coberturas del suelo que se encuentran fuera de la zona costera.<disabledText />
+					</tooltip>
+				</button>
+
+				<button id="ProAppModule1_RevisionCodigosDeCambios"
+						caption="Revision Codigos De Cambio"
+						className="UI.Buttons.CodigosDeCambioButton"
+						loadOnClick="true"
+						smallImage="CompareReplicaSchema16"
+						largeImage="CompareReplicaSchema32">
+					<tooltip heading="Revision Codigos De Cambio">
+						Compara polígonos entre capas para asignar el valor del atributo cambio.<disabledText />
+					</tooltip>
+				</button>
+
+				<button id="ProAppModule1_GenerarReportes"
+						caption="Generar Reporte"
+						className="UI.Buttons.ExportarReporte"
+						loadOnClick="true"
+						smallImage="NewReport16"
+						largeImage="NewReport32">
+					<tooltip heading="Generar Reporte">
+						Crea un archivo xlsx de conformidades.<disabledText />
+					</tooltip>
+				</button>				
+			</controls>
+
+		</insertModule>
+	</modules>
+</ArcGIS>
